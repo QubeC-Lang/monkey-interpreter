@@ -1,7 +1,7 @@
-use monkey_interpreter_core::add;
+use monkey_interpreter_core::nothing;
 
 #[test]
 fn it_works() {
-    let result = add(2, 2);
-    assert_eq!(result, 4);
+    let result = nothing();
+    assert_eq!(result, None);
 }

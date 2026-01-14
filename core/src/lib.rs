@@ -1,3 +1,6 @@
-pub fn add(left: u64, right: u64) -> u64 {
-    left + right
+/// A function that always returns None of type Option<()>
+/// as this is used as a placeholder for the core function of
+/// the library that is yet to be implemented.
+pub fn nothing() -> Option<()> {
+    None
 }
