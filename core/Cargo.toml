@@ -1,0 +1,12 @@
+[package]
+edition = "2024"
+
+name = "monkey-interpreter-core"
+version = "0.1.0"
+
+repository = "https://github.com/QubeC-Lang/monkey-interpreter"
+authors = [
+    "Qian Qian \"Qubik65536\" <qubik65536@qubik65536.top>"
+]
+
+[dependencies]
