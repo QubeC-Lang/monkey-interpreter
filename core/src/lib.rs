@@ -1,4 +1,4 @@
-pub mod structs;
+mod structs;
 mod tokenizer;
 
 /// A function that always returns None of type Option<()>

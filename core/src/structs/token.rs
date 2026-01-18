@@ -4,24 +4,24 @@ pub enum TokenType {
     Eof,
 
     // Identifiers + Literals
-    Identifier,         // foobar, x, y, fn, ...
-    Integer,            // 65536
+    Identifier, // foobar, x, y, fn, ...
+    Integer,    // 65536
 
     // Operators
-    Assign,             // =
-    Plus,               // +
+    Assign, // =
+    Plus,   // +
 
     // Delimiters
-    Comma,              // ,
-    Semicolon,          // ;
-    LeftParenthesis,    // (
-    RightParenthesis,   // )
-    LeftBrace,          // {
-    RightBrace,         // }
+    Comma,            // ,
+    Semicolon,        // ;
+    LeftParenthesis,  // (
+    RightParenthesis, // )
+    LeftBrace,        // {
+    RightBrace,       // }
 
     // Keywords
-    Function,           // fn
-    Let,                // let
+    Function, // fn
+    Let,      // let
 }
 
 #[derive(Debug)]
