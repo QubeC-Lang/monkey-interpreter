@@ -1,3 +1,4 @@
+/// Type definitions of tokens recognized by the tokenizer.
 #[derive(Debug, Eq, PartialEq)]
 pub enum TokenType {
     Illegal,
@@ -24,6 +25,7 @@ pub enum TokenType {
     Let,      // let
 }
 
+/// Structure representing a token with its type and literal value.
 #[derive(Debug)]
 pub struct Token {
     pub token_type: TokenType,

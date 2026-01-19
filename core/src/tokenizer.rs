@@ -24,12 +24,16 @@ impl Tokenizer {
         tokenizer
     }
 
+    /// Reads the next character from the input and updates the tokenizer's state
+    /// to point to the new character.
     pub fn read_char(&mut self) {
         self.character = self.input.chars().nth(self.read_position);
         self.position = self.read_position;
         self.read_position += 1;
     }
 
+    /// Retrieves the token corresponding to the current character read by the tokenizer,
+    /// and advances the tokenizer to the next character.
     pub fn next_token(&mut self) -> Token {
         let token = match self.character {
             Some('=') => Token { token_type: TokenType::Assign, literal: "=".to_string() },
