@@ -71,19 +71,3 @@ pub struct Token {
     pub token_type: TokenType,
     pub literal: String,
 }
-
-/// Looks up the token type for a given identifier string.
-/// If the identifier matches a keyword, returns the corresponding [`TokenType`](TokenType);
-/// otherwise, returns [`TokenType::Identifier`](TokenType::Identifier).
-pub fn identifier_lookup(ident: &str) -> TokenType {
-    match ident {
-        "fn" => TokenType::Function,
-        "let" => TokenType::Let,
-        "true" => TokenType::True,
-        "false" => TokenType::False,
-        "if" => TokenType::If,
-        "else" => TokenType::Else,
-        "return" => TokenType::Return,
-        _ => TokenType::Identifier,
-    }
-}
