@@ -1,6 +1,6 @@
+use crate::Tokenizer;
 use crate::ast;
 use crate::structs;
-use crate::Tokenizer;
 
 pub struct Parser<'a> {
     pub tokenizer: Tokenizer<'a>,
@@ -26,11 +26,15 @@ impl Parser<'_> {
     }
 
     fn is_current_token(&self, token_type: structs::token::TokenType) -> bool {
-        self.current_token.as_ref().map_or(false, |token| token.token_type == token_type)
+        self.current_token
+            .as_ref()
+            .is_some_and(|token| token.token_type == token_type)
     }
 
     fn is_peek_token(&self, token_type: structs::token::TokenType) -> bool {
-        self.peek_token.as_ref().map_or(false, |token| token.token_type == token_type)
+        self.peek_token
+            .as_ref()
+            .is_some_and(|token| token.token_type == token_type)
     }
 
     fn expect_peek(&mut self, token_type: structs::token::TokenType) -> bool {
@@ -82,7 +86,8 @@ impl Parser<'_> {
         };
 
         while self.current_token.is_some()
-            && self.current_token.as_ref().unwrap().token_type != structs::token::TokenType::Eof {
+            && self.current_token.as_ref().unwrap().token_type != structs::token::TokenType::Eof
+        {
             if let Some(statement) = self.parse_statement() {
                 program.statements.push(statement);
             }
@@ -97,7 +102,7 @@ impl Parser<'_> {
 mod tests {
     use super::*;
 
-    fn test_let_statement(statement: &Box<dyn ast::Statement>, expected_name: &str) {
+    fn test_let_statement(statement: &dyn ast::Statement, expected_name: &str) {
         assert_eq!(
             statement.token_literal(),
             "let",
@@ -105,7 +110,10 @@ mod tests {
             statement.token_literal()
         );
 
-        if let Some(let_statement) = statement.as_any().downcast_ref::<ast::let_statement::LetStatement>() {
+        if let Some(let_statement) = statement
+            .as_any()
+            .downcast_ref::<ast::let_statement::LetStatement>()
+        {
             assert_eq!(
                 let_statement.name.value, expected_name,
                 "let_statement.name.value not '{}'. got={}",
@@ -129,14 +137,15 @@ mod tests {
 
         assert!(program.is_some(), "parse_program() returned None");
         assert_eq!(
-            program.as_ref().unwrap().statements.len(), 3,
+            program.as_ref().unwrap().statements.len(),
+            3,
             "program.statements does not contain 3 statements. got={}",
             program.as_ref().unwrap().statements.len()
         );
 
-        let expected_identifiers = vec!["x", "y", "foobar"];
+        let expected_identifiers = ["x", "y", "foobar"];
         for (i, expected_identifier) in expected_identifiers.iter().enumerate() {
-            let statement = &program.as_ref().unwrap().statements[i];
+            let statement = program.as_ref().unwrap().statements[i].as_ref();
             test_let_statement(statement, expected_identifier);
         }
     }
