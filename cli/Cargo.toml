@@ -11,3 +11,4 @@ authors = [
 
 [dependencies]
 monkey-interpreter-core = { workspace = true }
+whoami = "2.1.3"

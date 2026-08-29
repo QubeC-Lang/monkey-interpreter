@@ -4,6 +4,8 @@ mod structs;
 mod tokenizer;
 mod utils;
 
+pub mod repl;
+
 pub use structs::token::{Token, TokenType};
 pub use tokenizer::Tokenizer;
 
