@@ -2,9 +2,9 @@ use crate::ast;
 use crate::structs;
 
 /// A struct representing an identifier in the abstract syntax tree (AST).
-pub struct Identifier {
-    pub token: structs::token::Token,
-    pub value: String,
+pub(crate) struct Identifier {
+    pub(crate) token: structs::token::Token,
+    pub(crate) value: String,
 }
 
 impl ast::AstNode for Identifier {

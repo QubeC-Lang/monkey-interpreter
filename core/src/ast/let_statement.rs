@@ -2,10 +2,10 @@ use crate::ast;
 use crate::structs;
 
 /// A struct representing a 'let' statement in the abstract syntax tree (AST).
-pub struct LetStatement {
-    pub token: structs::token::Token,
-    pub name: ast::identifier::Identifier,
-    pub value: Option<Box<dyn ast::Expression>>,
+pub(crate) struct LetStatement {
+    pub(crate) token: structs::token::Token,
+    pub(crate) name: ast::identifier::Identifier,
+    pub(crate) value: Option<Box<dyn ast::Expression>>,
 }
 
 impl ast::AstNode for LetStatement {

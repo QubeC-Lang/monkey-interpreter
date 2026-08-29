@@ -1,1 +1,1 @@
-pub mod token;
+pub(crate) mod token;

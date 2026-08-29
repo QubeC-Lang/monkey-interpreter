@@ -3,9 +3,9 @@ use crate::ast;
 use crate::structs;
 
 pub struct Parser<'a> {
-    pub tokenizer: Tokenizer<'a>,
-    pub current_token: Option<structs::token::Token>,
-    pub peek_token: Option<structs::token::Token>,
+    tokenizer: Tokenizer<'a>,
+    current_token: Option<structs::token::Token>,
+    peek_token: Option<structs::token::Token>,
 }
 
 impl Parser<'_> {

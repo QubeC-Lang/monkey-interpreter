@@ -1,8 +1,8 @@
 use std::any::Any;
 
-pub mod identifier;
-pub mod let_statement;
-pub mod program;
+pub(crate) mod identifier;
+pub(crate) mod let_statement;
+pub(crate) mod program;
 
 /// The trait of a node in the abstract syntax tree (AST).
 pub trait AstNode {
@@ -22,7 +22,7 @@ pub trait Statement: AstNode {
 /// The trait of an expression in the abstract syntax tree (AST),
 /// representing a construct that produces a value, such as arithmetic operations,
 /// function calls, or variable references.
-pub trait Expression: AstNode {
+pub(crate) trait Expression: AstNode {
     /// Returns this expression as [`Any`] so callers can downcast trait objects
     /// to concrete expression types.
     fn as_any(&self) -> &dyn Any;
