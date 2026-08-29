@@ -1,5 +1,5 @@
 /// Type definitions of tokens recognized by the tokenizer.
-#[derive(Debug, Eq, PartialEq)]
+#[derive(Debug, Eq, PartialEq, Clone)]
 pub enum TokenType {
     /// The token type for illegal or unrecognized characters.
     Illegal,
@@ -66,7 +66,7 @@ pub enum TokenType {
 }
 
 /// Structure representing a token with its type and literal value.
-#[derive(Debug)]
+#[derive(Debug, Clone)]
 pub struct Token {
     pub token_type: TokenType,
     pub literal: String,

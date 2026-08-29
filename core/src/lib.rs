@@ -1,9 +1,11 @@
+mod ast;
 mod classifier;
 mod scanner;
 mod structs;
 mod tokenizer;
 mod utils;
 
+pub mod parser;
 pub mod repl;
 
 pub use structs::token::{Token, TokenType};
