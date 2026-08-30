@@ -65,6 +65,43 @@ pub enum TokenType {
     Return, // return
 }
 
+impl std::fmt::Display for TokenType {
+    /// A all caps `fmt` implementation for `TokenType` to provide a string representation of the token type.
+    /// This is for error messages display and debugging purposes, and is not intended for use in the tokenizer or parser.
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        let token_type_str = match self {
+            TokenType::Illegal => "ILLEGAL",
+            TokenType::Eof => "EOF",
+            TokenType::Identifier => "IDENTIFIER",
+            TokenType::Integer => "INTEGER",
+            TokenType::Assign => "ASSIGN",
+            TokenType::Plus => "PLUS",
+            TokenType::Minus => "MINUS",
+            TokenType::Asterisk => "ASTERISK",
+            TokenType::Slash => "SLASH",
+            TokenType::LessThan => "LESS_THAN",
+            TokenType::GreaterThan => "GREATER_THAN",
+            TokenType::Bang => "BANG",
+            TokenType::Equal => "EQUAL",
+            TokenType::NotEqual => "NOT_EQUAL",
+            TokenType::Comma => "COMMA",
+            TokenType::Semicolon => "SEMICOLON",
+            TokenType::LeftParenthesis => "LEFT_PARENTHESIS",
+            TokenType::RightParenthesis => "RIGHT_PARENTHESIS",
+            TokenType::LeftBrace => "LEFT_BRACE",
+            TokenType::RightBrace => "RIGHT_BRACE",
+            TokenType::Function => "FUNCTION",
+            TokenType::Let => "LET",
+            TokenType::True => "TRUE",
+            TokenType::False => "FALSE",
+            TokenType::If => "IF",
+            TokenType::Else => "ELSE",
+            TokenType::Return => "RETURN",
+        };
+        write!(f, "{token_type_str}")
+    }
+}
+
 /// Structure representing a token with its type and literal value.
 #[derive(Debug, Clone)]
 pub struct Token {
